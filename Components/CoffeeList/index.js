@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { List, Content } from "native-base";
+import { List, Content, Button, Icon } from "native-base";
 
 //Components
 import CoffeeItem from "./CoffeeItem";
@@ -20,6 +20,24 @@ const CoffeeList = () => {
       <List>{shops}</List>
     </Content>
   );
+};
+
+CoffeeList.navigationOptions = ({ navigation }) => {
+  return {
+    title: "Coffee List",
+    headerLeft: null,
+    headerRight: (
+      <Button transparent onPress={() => navigation.navigate("CartScreen")}>
+        <Icon
+          style={{ color: "white" }}
+          type="FontAwesome"
+          name="shopping-cart"
+          fontSize="large"
+        />
+      </Button>
+    ),
+    headerTintColor: "white"
+  };
 };
 
 export default observer(CoffeeList);
